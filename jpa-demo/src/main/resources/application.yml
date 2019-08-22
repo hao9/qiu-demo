@@ -1,0 +1,95 @@
+server:
+  #配置端口号
+  port: 8088
+#spring:
+#  application:
+    #配置服务名称
+  #    name: jpa-demo
+
+  #数据源和jpa配置
+    #  datasource:
+    #数据库相关的配置url  -SSL连接设置为false
+    #url: jdbc:mysql://localhost:3306/demo?characterEncoding=utf8&useSSL=false
+    #配置用户名
+    # username: root
+    #配置密码
+    #password: root
+    #driver-class-name: com.mysql.cj.jdbc.Driver
+    #type: com.zaxxer.hikari.HikariDataSource
+    #initialization-mode: always
+  #continue-on-error: true
+
+
+  #下面为连接池相关配置
+    #dbcp2:
+    #初始化连接池大小
+    #initial-size: 10
+    #陪住最小连接池数
+    #min-idle: 10
+    #配置最大连接池数
+    #max-idle: 30
+    #配置获取超时连接的等待时间
+    #max-wait-millis: 30000
+    #配置多长时间进行一次检测,检测需要关闭的数据库连接
+    #time-between-eviction-runs-millis: 200000
+    #配置连接在连接池的最小生存时间
+  #remove-abandoned-on-maintenance: 200000
+
+  #jpa:
+    #配置数据库类型
+   # database: MYSQL
+    #配置是否打印sql
+    #show-sql: true
+    #Hibernate相关配置
+    #hibernate:
+      #配置级联等级
+    # ddl-auto: update
+      #命名策略
+    # naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    #properties:
+    # hibernate:
+  #   dialect: org.hibernate.dialect.MySQL5Dialect
+
+
+spring:
+  datasource:
+    jdbc-url: jdbc:mysql://127.0.0.1:3306/demo?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=GMT%2B8
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    initialization-mode: always
+    continue-on-error: true
+    hikari:
+      minimum-idle: 5
+      connection-test-query: SELECT 1 FROM DUAL
+      maximum-pool-size: 20
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: SpringBootDemoHikariCP
+      max-lifetime: 60000
+      connection-timeout: 30000
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL57InnoDBDialect
+    open-in-view: true
+logging:
+  level:
+    com.xkcoding: debug
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace
+
+
+  #配置依次为连接数据库类型,是否打印Sql和hIbernate级联方式,有以下几种:
+  #  　　 1)、validate- 加载hibernate时，验证创建数据库表结构。
+  #  　　 2)、create- 每次加载hibernate，重新创建数据库表结构，这就是导致数据库表数据丢失的原因。
+  #　　   3)、create-drop 加载hibernate时创建，退出是删除表结构。
+  #　     4)、update-级联更新 加载hibernate自动更新数据库结构。
+  #     我们在此选择级联更新，在原有表基础上进行迭代。
+  #     命名策略有以下两种：
+  #　　1)、org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy   遇到大写字母 加”_”的命名。
+  #　　2)、org.hibernate.cfg.ImprovedNamingStrategy   无修改命名 。
