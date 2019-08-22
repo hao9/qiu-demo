@@ -4,7 +4,7 @@ spring:
       password: root
       type: com.alibaba.druid.pool.DruidDataSource
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/customers
+      url: jdbc:mysql://localhost:3306/demo
 mybatis:
   mapper-locations: classpath:sqlmap/UserMapper.xml
   type-aliases-package: org.springboot.sample.entity
