@@ -6,12 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="jpa-demo" />
         <module name="qiu-demo-user" />
         <module name="demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="demo" target="1.8" />
+      <module name="jpa-demo" target="1.8" />
       <module name="qiu-demo-user" target="1.8" />
       <module name="qiu-demo-user-login" target="1.8" />
     </bytecodeTargetLevel>
@@ -19,6 +21,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="demo" options="-parameters" />
+      <module name="jpa-demo" options="-parameters" />
       <module name="qiu-demo-user" options="-parameters" />
       <module name="qiu-demo-user-login" options="-parameters" />
     </option>
