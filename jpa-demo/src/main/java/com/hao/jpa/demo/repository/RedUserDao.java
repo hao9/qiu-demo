@@ -1,6 +1,6 @@
 package com.hao.jpa.demo.repository;
 
-import com.hao.jpa.demo.entity.User;
+import com.hao.jpa.demo.entity.RedUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -18,6 +18,6 @@ import org.springframework.stereotype.Repository;
  * @modified: yangkai.shen
  */
 @Repository
-public interface UserDao extends JpaRepository<User, Long> {
+public interface RedUserDao extends JpaRepository<RedUser, Long> {
     
 }

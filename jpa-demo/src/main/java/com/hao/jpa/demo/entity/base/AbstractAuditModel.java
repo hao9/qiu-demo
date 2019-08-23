@@ -45,7 +45,8 @@ public abstract class AbstractAuditModel implements Serializable {
      * 上次更新时间
      */
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "last_update_time", nullable = false)
+    @Column(name = "update_time", nullable = false)
     @LastModifiedDate
-    private Date lastUpdateTime;
+    private Date updateTime;
+
 }
