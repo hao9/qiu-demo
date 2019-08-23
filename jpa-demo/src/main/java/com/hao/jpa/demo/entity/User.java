@@ -27,7 +27,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "orm_user")
+@Table(name = "red_user")
 @ToString(callSuper = true)
 public class User extends AbstractAuditModel {
     /**
