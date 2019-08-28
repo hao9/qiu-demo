@@ -39,15 +39,17 @@ public class RedUserService {
     }
     public PageResponse<RedUser> getList(RedUserInfo u){
         Pageable pageabl1e = PageRequest.of(u.getPageCurr() -1 ,u.getPageSize());
-        Page<RedUser> pageResult = redUserDao.findAll(pageabl1e);
+
+        RedUser redUser = new RedUser();
+        redUser.setName(u.getName());
+        Example<RedUser> example = Example.of(redUser);
+        Page<RedUser> pageResult = redUserDao.findAll(example,pageabl1e);
         PageResponse<RedUser> result = new PageResponse<RedUser>();
         result.setDatas(pageResult.getContent());
         result.setListSize(Integer.valueOf(pageResult.getTotalElements()+""));
         result.setPageCount(pageResult.getTotalPages());
         result.setPageCurr(u.getPageCurr());
         result.setPageSize(u.getPageSize());
-        //RedUser ru = new RedUser();
-        //ru.setName(u.getName()==null ? "" :u.getName());
         return result;
     }
     public Boolean deleteRedUser(CommentIDRequest u){

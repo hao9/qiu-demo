@@ -25,7 +25,7 @@ public class RedUserController {
     public Boolean inserRedUser(@Validated  RedUserRequest u){
         return redUserService.insertOrUpdateRedUser(u);
     }
-    @PostMapping("/list")
+    @RequestMapping("/list")
     public PageResponse<RedUser> getList(RedUserInfo u){
         return redUserService.getList(u);
     }
