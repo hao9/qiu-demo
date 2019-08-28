@@ -6,6 +6,6 @@ import java.io.Serializable;
 
 @Data
 public class PageInfro implements Serializable {
-     Integer pageCurr ;
-     Integer pageSize ;
+     Integer pageCurr = 1;
+     Integer pageSize = 20;
 }

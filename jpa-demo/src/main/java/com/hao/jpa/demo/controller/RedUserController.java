@@ -1,11 +1,13 @@
 package com.hao.jpa.demo.controller;
 
 
+import com.hao.jpa.demo.Reponse.PageResponse;
+import com.hao.jpa.demo.Request.CommentIDRequest;
 import com.hao.jpa.demo.Request.RedUserInfo;
+import com.hao.jpa.demo.Request.RedUserRequest;
 import com.hao.jpa.demo.entity.RedUser;
 import com.hao.jpa.demo.service.RedUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,12 +22,16 @@ public class RedUserController {
     RedUserService redUserService;
 
     @PostMapping("/add")
-    public RedUser inserRedUser(@Validated  RedUser u){
-        return redUserService.insertRedUser(u);
+    public Boolean inserRedUser(@Validated  RedUserRequest u){
+        return redUserService.insertOrUpdateRedUser(u);
     }
     @PostMapping("/list")
-    public Page<RedUser> getList(RedUserInfo u){
+    public PageResponse<RedUser> getList(RedUserInfo u){
         return redUserService.getList(u);
+    }
+    @PostMapping("delete")
+    public Boolean deleteRedUser(CommentIDRequest u){
+        return redUserService.deleteRedUser(u);
     }
 
 }
