@@ -1,6 +1,6 @@
 server:
   #配置端口号
-  port: 81
+  port: 8099
 
 spring:
   datasource:
