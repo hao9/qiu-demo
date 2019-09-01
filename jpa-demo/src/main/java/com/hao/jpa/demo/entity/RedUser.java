@@ -48,14 +48,11 @@ import java.util.Date;
 @ToString(callSuper = true)
 public class RedUser implements Serializable {
 
-    @NotNull(message = "年龄不能为空")
-    @Min(1)
-    @Max(100)
+
     private Integer age;//年龄
-    @NotNull
+
     private String name;//姓名
-    @Min(0)
-    @Max(1)
+
     private Integer sex;//性别
     @NumberFormat(pattern = "###.##")
     private Double height;//身高

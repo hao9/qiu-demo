@@ -39,12 +39,13 @@ public class RedUserService {
     }
     public PageResponse<RedUser> getList(RedUserInfo u){
         Pageable pageabl1e = PageRequest.of(u.getPageCurr() -1 ,u.getPageSize());
-
         RedUser redUser = new RedUser();
         redUser.setName(u.getName());
+        redUser.setStatus(RedUserInfoEnumInterface.STATUS.ABLE);
         Example<RedUser> example = Example.of(redUser);
         Page<RedUser> pageResult = redUserDao.findAll(example,pageabl1e);
         PageResponse<RedUser> result = new PageResponse<RedUser>();
+        if(null == pageResult || null == pageResult.getContent()) return result;
         result.setDatas(pageResult.getContent());
         result.setListSize(Integer.valueOf(pageResult.getTotalElements()+""));
         result.setPageCount(pageResult.getTotalPages());
@@ -55,7 +56,12 @@ public class RedUserService {
     public Boolean deleteRedUser(CommentIDRequest u){
         Boolean result = true;
         try {
-            redUserDao.deleteById(u.getId());
+            RedUser redUser = new RedUser();
+            redUser.setStatus(RedUserInfoEnumInterface.STATUS.DEL);
+            redUser.setId(u.getId());
+            redUser.setUpdateTime(new DateTime());
+            return redUserDao.save(redUser).getId() !=  null;
+            //redUserDao.deleteById(u.getId());
         }catch(Exception e){
             result = false;
         }
