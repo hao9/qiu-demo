@@ -30,15 +30,13 @@ import java.util.Date;
 @Table(name = "red_login")
 @ToString(callSuper = true)
 public class RedLogin implements Serializable {
-    private String nick_name;//昵称
     private String email;//电邮
     private String password;//密码
-    private String salt;//盐
-    private String phone_number;//手机号码
-    private String address;//地址
     private Date login_time;//登录时间
     private Long user_id; //用户id
     private String login_address; //登陆ip
+    private String name;
+    private String phone;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
